@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * UserApplication实体
+ * ApiApplication实体
  *
  * @author Faker
  * @version 1.0
