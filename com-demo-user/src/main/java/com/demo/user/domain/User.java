@@ -1,7 +1,8 @@
 package com.demo.user.domain;
 
-import com.demo.user.annotation.Colume;
+import com.demo.user.annotation.Column;
 import com.demo.user.annotation.Table;
+import com.demo.user.base.BaseDO;
 import lombok.Data;
 
 import java.util.Date;
@@ -15,29 +16,29 @@ import java.util.Date;
  */
 @Data
 @Table("user")
-public class User {
-    @Colume("id")
+public class User extends BaseDO<Long> {
+    @Column("id")
     private Long id;
-    @Colume(("status"))
+    @Column(("status"))
     private Integer status;
-    @Colume(("username"))
+    @Column(("username"))
     private String username;
-    @Colume(("realname"))
+    @Column(("realname"))
     private String realName;
-    @Colume(("salt"))
+    @Column(("salt"))
     private String salt;
-    @Colume(("password"))
+    @Column(("password"))
     private String password;
-    @Colume(("ctime"))
-    private Date createTime;
-    @Colume(("utime"))
-    private Date updateTime;
-    @Colume(("email"))
+    @Column(("email"))
     private String email;
-    @Colume(("mobile"))
+    @Column(("mobile"))
     private String mobile;
-    @Colume(("address"))
+    @Column(("address"))
     private String address;
-    @Colume(("sex"))
+    @Column(("sex"))
     private Integer sex;
+    @Column(("ctime"))
+    private Date createTime;
+    @Column(("utime"))
+    private Date updateTime;
 }
