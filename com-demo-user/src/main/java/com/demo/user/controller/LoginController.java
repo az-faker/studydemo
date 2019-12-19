@@ -27,7 +27,7 @@ public class LoginController {
         ModelAndView mv = new ModelAndView();
 
         mv.addObject(user);
-        mv.setViewName("redirect:/");
+        mv.setViewName("redirect:/login");
 
         request.getSession().setAttribute("user", user);
         return mv;
