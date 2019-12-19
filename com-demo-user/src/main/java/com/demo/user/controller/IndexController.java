@@ -27,7 +27,7 @@ public class IndexController {
         if (ObjectUtil.isNull(user)) {
             mv.setViewName("redirect:/user/login");
         } else {
-            mv.setViewName("login/index");
+            mv.setViewName("redirect:user/index");
             mv.addObject(user);
         }
 

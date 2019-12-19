@@ -13,7 +13,9 @@ import com.demo.user.domain.User;
 import com.demo.user.servie.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,6 +49,8 @@ public class UserServiceImpl implements UserService {
         user.setPassword(pass);
         user.setSalt(salt);
         user.setStatus(UserConst.STATUS_INIT);
+        user.setCreateTime(new Date());
+        user.setUpdateTime(new Date());
         return userDao.insert(user) > 0;
     }
 
@@ -103,5 +107,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getUser(User user) {
         return userDao.findByExample(user);
+    }
+
+    @Override
+    public User getUserByName(String username) {
+        User user = new User();
+        user.setUsername(username);
+        List<User> users = userDao.findByExample(user);
+        return CollectionUtils.isEmpty(users) ? null : users.get(0);
     }
 }

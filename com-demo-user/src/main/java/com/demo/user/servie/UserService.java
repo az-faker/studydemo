@@ -52,4 +52,6 @@ public interface UserService {
      * @return 用户列表
      */
     List<User> getUser(User user);
+
+    User getUserByName(String username);
 }

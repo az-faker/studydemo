@@ -31,65 +31,47 @@
 
 <body>
 
-<form action="${ctx}/addAuth" method="get">
+<form action="${ctx}/user" id="user" method="post">
     <div>
-        <label for="serviceType">微信类型*</label>
+        <label for="username">用户名*</label>
         <div>
-            <input type="text" id="serviceType" name="serviceType" required>
+            <input type="text" id="username" name="username" required>
         </div>
     </div>
     <div>
-        <label for="code">code*</label>
+        <label for="realName">真实姓名*</label>
         <div>
-            <input type="text" id="code" name="code" required>
+            <input type="text" id="realName" name="realName" required>
         </div>
     </div>
     <div>
-        <label for="url">url*</label>
+        <label for="password">密码*</label>
         <div>
-            <input class="bigbox" type="text" id="url" name="url" required>
+            <input class="text" type="text" id="password" name="password" required>
         </div>
     </div>
     <div>
-        <label for="replaceField">替换参数</label>
+        <label for="email">邮箱*</label>
         <div>
-            <input class="box" type="text" id="replaceField" name="replaceField">
+            <input class="box" type="text" id="email" name="email">
         </div>
     </div>
     <div>
-        <label for="isNeed">是否需要业务处理(1是0否)*</label>
+        <label for="mobile">手机号*</label>
         <div>
-            <input type="text" id="isNeed" name="isNeed" required>
+            <input type="text" id="mobile" name="mobile" required>
         </div>
     </div>
     <div>
-        <label for="invokeType">调用方式(0PHP1Java)</label>
+        <label for="address">地址*</label>
         <div>
-            <input type="text" id="invokeType" name="invokeType">
+            <input type="text" id="address" name="address">
         </div>
     </div>
     <div>
-        <label for="serviceApiCode">业务系统名</label>
+        <label for="sex">性别*</label>
         <div>
-            <input type="text" id="serviceApiCode" name="serviceApiCode">
-        </div>
-    </div>
-    <div>
-        <label for="serviceApiName">PHP对应服务名Java对应url</label>
-        <div>
-            <input class="bigbox" type="text" id="serviceApiName" name="serviceApiName">
-        </div>
-    </div>
-    <div>
-        <label for="serviceApiMethod">PHP对应方法名Java对应请求方式</label>
-        <div>
-            <input type="text" id="serviceApiMethod" name="serviceApiMethod">
-        </div>
-    </div>
-    <div>
-        <label for="serviceApiParam">调用服务所需参数，逗号分隔</label>
-        <div>
-            <input class="box" type="text" id="serviceApiParam" name="serviceApiParam">
+            <input type="text" id="sex" name="sex">
         </div>
     </div>
     <div>

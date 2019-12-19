@@ -7,7 +7,7 @@ public interface Const {
 	/**
 	 * 加密盐前缀
 	 */
-	String SALT_PREFIX = "::SpringBootDemo::";
+	String SALT_PREFIX = "::User::";
 
 	/**
 	 * 逗号分隔符

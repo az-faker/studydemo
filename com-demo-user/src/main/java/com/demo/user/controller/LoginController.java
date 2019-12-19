@@ -1,14 +1,21 @@
 package com.demo.user.controller;
 
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.crypto.SecureUtil;
+import com.demo.user.constant.Const;
 import com.demo.user.domain.User;
+import com.demo.user.servie.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Objects;
 
 /**
  * LoginController实体
@@ -22,14 +29,37 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/user")
 public class LoginController {
 
+    @Autowired
+    private UserService userService;
+
     @PostMapping("/login")
-    public ModelAndView login(User user, HttpServletRequest request) {
+    public ModelAndView login(@ModelAttribute("userForm") User user, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
+        if (null == user || StrUtil.isBlank(user.getUsername()) || StrUtil.isBlank(user.getPassword())) {
+            log.error("# 账号或密码错误");
+            mv.setViewName("redirect:/user/login");
+            return mv;
+        }
 
-        mv.addObject(user);
-        mv.setViewName("redirect:/login");
+        User dbUser = userService.getUserByName(user.getUsername());
+        if (dbUser == null) {
+            log.error("# 账号或密码错误");
+            mv.setViewName("redirect:/user/login");
+        } else {
+            String pass = SecureUtil.md5(user.getPassword() + Const.SALT_PREFIX + dbUser.getSalt());
+            if (!Objects.equals(pass, dbUser.getPassword())) {
+                log.error("# 密码校验失败");
+                mv.setViewName("redirect:/user/login");
+                return mv;
+            }
+            log.info("# 登录成功");
+            mv.addObject(user);
+            mv.setViewName("redirect:/user/login");
 
-        request.getSession().setAttribute("user", user);
+            request.getSession().setAttribute("user", user);
+        }
+
+
         return mv;
     }
 
@@ -40,6 +70,7 @@ public class LoginController {
 
     @GetMapping("/register")
     public ModelAndView register() {
-        return new ModelAndView("register");
+        log.info("# register");
+        return new ModelAndView("user/addUser");
     }
 }
