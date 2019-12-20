@@ -26,7 +26,7 @@ import java.util.Objects;
  */
 @Slf4j
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/login")
 public class LoginController {
 
     @Autowired
@@ -37,24 +37,24 @@ public class LoginController {
         ModelAndView mv = new ModelAndView();
         if (null == user || StrUtil.isBlank(user.getUsername()) || StrUtil.isBlank(user.getPassword())) {
             log.error("# 账号或密码错误");
-            mv.setViewName("redirect:/user/login");
+            mv.setViewName("redirect:/login/login");
             return mv;
         }
 
         User dbUser = userService.getUserByName(user.getUsername());
         if (dbUser == null) {
             log.error("# 账号或密码错误");
-            mv.setViewName("redirect:/user/login");
+            mv.setViewName("redirect:/login/login");
         } else {
             String pass = SecureUtil.md5(user.getPassword() + Const.SALT_PREFIX + dbUser.getSalt());
             if (!Objects.equals(pass, dbUser.getPassword())) {
                 log.error("# 密码校验失败");
-                mv.setViewName("redirect:/user/login");
+                mv.setViewName("redirect:/login/login");
                 return mv;
             }
             log.info("# 登录成功");
             mv.addObject(user);
-            mv.setViewName("redirect:/user/login");
+            mv.setViewName("redirect:/login/qin");
 
             request.getSession().setAttribute("user", user);
         }
@@ -70,7 +70,17 @@ public class LoginController {
 
     @GetMapping("/register")
     public ModelAndView register() {
-        log.info("# register");
+        log.info("# 注册");
         return new ModelAndView("user/addUser");
+    }
+
+    @GetMapping("/qin")
+    public ModelAndView qin() {
+        return new ModelAndView("user/qin");
+    }
+
+    @PostMapping("/qin")
+    public ModelAndView getQin() {
+        return new ModelAndView("user/getqin");
     }
 }

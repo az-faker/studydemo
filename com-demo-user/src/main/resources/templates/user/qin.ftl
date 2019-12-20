@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>登录</title>
+    <title>do you need qin ?</title>
 
 
     <style type="text/css">
@@ -65,14 +65,11 @@
 <body>
 
 <div class="container">
-    <form action="${ctx}/login/login" class="form-signin" id="userForm" method="POST">
-        <h3 class="form-signin-heading">请登录</h3>
-        <input type="text" class="form-control input-block-level" id="username" name="username" placeholder="用户"
-               value="admin">
-        <input type="password" class="form-control input-block-level" id="password" name="password" placeholder="密码"
-               value="admin">
-        <button class="btn btn-large btn-primary" type="submit">登录</button>
-        <button class="btn btn-large btn-primary" type="button"><a href="${ctx}/login/register">注册</a></button>
+    <form action="${ctx}/login/qin" class="form-signin" id="qinForm" method="POST">
+        <h3 class="form-signin-heading">是否需要庆余年？</h3>
+
+        <button class="btn btn-large btn-primary" type="submit">是</button>
+        <button class="btn btn-large btn-primary" type="button"><a href="${ctx}/login/login">否</a></button>
         <br>
         <br>
     </form>

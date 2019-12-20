@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>登录</title>
+    <title>here is qin</title>
 
 
     <style type="text/css">
@@ -65,17 +65,8 @@
 <body>
 
 <div class="container">
-    <form action="${ctx}/login/login" class="form-signin" id="userForm" method="POST">
-        <h3 class="form-signin-heading">请登录</h3>
-        <input type="text" class="form-control input-block-level" id="username" name="username" placeholder="用户"
-               value="admin">
-        <input type="password" class="form-control input-block-level" id="password" name="password" placeholder="密码"
-               value="admin">
-        <button class="btn btn-large btn-primary" type="submit">登录</button>
-        <button class="btn btn-large btn-primary" type="button"><a href="${ctx}/login/register">注册</a></button>
-        <br>
-        <br>
-    </form>
+    <h1>王大锤锤提示您：</h1>
+    <a href="https://pan.baidu.com/s/15T8VcN410mITjbJP4IjjwQ">庆余年   密码: 3b0s</a>
 </div>
 
 </body>

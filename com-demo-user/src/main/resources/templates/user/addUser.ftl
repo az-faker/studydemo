@@ -69,7 +69,7 @@
         </div>
     </div>
     <div>
-        <label for="sex">性别*</label>
+        <label for="sex">性别*(男输入1，女输入0)</label>
         <div>
             <input type="text" id="sex" name="sex">
         </div>
@@ -80,7 +80,7 @@
                 <strong>保存</strong>
             </button>
 
-            <a href="${ctx}/listAuth">
+            <a href="${ctx}/login/login">
                 <button type="button">取消</button>
             </a>
         </div>

@@ -25,9 +25,9 @@ public class IndexController {
 
         User user = (User) request.getSession().getAttribute("user");
         if (ObjectUtil.isNull(user)) {
-            mv.setViewName("redirect:/user/login");
+            mv.setViewName("redirect:login/login");
         } else {
-            mv.setViewName("redirect:user/index");
+            mv.setViewName("redirect:login/qin");
             mv.addObject(user);
         }
 
