@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class RandomIdClient implements IdClient {
+
     @Override
     public long nextId(int count) {
         return Long.valueOf(System.currentTimeMillis() + random());
